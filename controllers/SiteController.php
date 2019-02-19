@@ -10,9 +10,6 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 use app\models\SignupForm;
-use app\models\ResetPasswordForm;
-use app\models\PasswordResetRequestForm;
-
 
 class SiteController extends Controller
 {
