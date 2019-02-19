@@ -26,10 +26,11 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'resvId',
+            'nameResv:ntext',
             'roomNo',
             'pay',
             'addCost',
-            'disc',
+            //'disc',
             //'change',
 
             ['class' => 'yii\grid\ActionColumn'],

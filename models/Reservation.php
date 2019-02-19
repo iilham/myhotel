@@ -32,13 +32,12 @@ class Reservation extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['resvId', 'name', 'address', 'capacity', 'dateIn', 'dateOut', 'roomType', 'RoomNo'], 'required'],
-            [['resvId', 'capacity'], 'integer'],
+            [['name', 'address', 'capacity', 'dateIn', 'dateOut', 'roomType', 'RoomNo'], 'required'],
             [['address', 'roomType'], 'string'],
+            [['capacity'], 'integer'],
             [['name'], 'string', 'max' => 25],
             [['dateIn', 'dateOut'], 'string', 'max' => 15],
             [['RoomNo'], 'string', 'max' => 4],
-            [['resvId'], 'unique'],
         ];
     }
 

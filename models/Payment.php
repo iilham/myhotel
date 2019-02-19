@@ -8,6 +8,7 @@ use Yii;
  * This is the model class for table "payment".
  *
  * @property int $resvId
+ * @property string $nameResv
  * @property string $roomNo
  * @property double $pay
  * @property double $addCost
@@ -30,12 +31,11 @@ class Payment extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['resvId', 'roomNo', 'pay', 'disc', 'change'], 'required'],
-            [['resvId'], 'integer'],
+            [['nameResv', 'roomNo', 'pay', 'disc', 'change'], 'required'],
+            [['nameResv'], 'string'],
             [['pay', 'addCost', 'disc', 'change'], 'number'],
             [['roomNo'], 'string', 'max' => 6],
             [['roomNo'], 'unique'],
-            [['resvId'], 'unique'],
         ];
     }
 
@@ -46,6 +46,7 @@ class Payment extends \yii\db\ActiveRecord
     {
         return [
             'resvId' => 'Resv ID',
+            'nameResv' => 'Name Resv',
             'roomNo' => 'Room No',
             'pay' => 'Pay',
             'addCost' => 'Add Cost',

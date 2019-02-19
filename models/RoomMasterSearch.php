@@ -4,12 +4,12 @@ namespace app\models;
 
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Payment;
+use app\models\RoomMaster;
 
 /**
- * PaymentSearch represents the model behind the search form of `app\models\Payment`.
+ * RoomMasterSearch represents the model behind the search form of `app\models\RoomMaster`.
  */
-class PaymentSearch extends Payment
+class RoomMasterSearch extends RoomMaster
 {
     /**
      * {@inheritdoc}
@@ -17,9 +17,9 @@ class PaymentSearch extends Payment
     public function rules()
     {
         return [
-            [['resvId'], 'integer'],
-            [['nameResv', 'roomNo'], 'safe'],
-            [['pay', 'addCost', 'disc', 'change'], 'number'],
+            [['no'], 'integer'],
+            [['roomType', 'amenities'], 'safe'],
+            [['price'], 'number'],
         ];
     }
 
@@ -41,7 +41,7 @@ class PaymentSearch extends Payment
      */
     public function search($params)
     {
-        $query = Payment::find();
+        $query = RoomMaster::find();
 
         // add conditions that should always apply here
 
@@ -59,15 +59,12 @@ class PaymentSearch extends Payment
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'resvId' => $this->resvId,
-            'pay' => $this->pay,
-            'addCost' => $this->addCost,
-            'disc' => $this->disc,
-            'change' => $this->change,
+            'no' => $this->no,
+            'price' => $this->price,
         ]);
 
-        $query->andFilterWhere(['like', 'nameResv', $this->nameResv])
-            ->andFilterWhere(['like', 'roomNo', $this->roomNo]);
+        $query->andFilterWhere(['like', 'roomType', $this->roomType])
+            ->andFilterWhere(['like', 'amenities', $this->amenities]);
 
         return $dataProvider;
     }

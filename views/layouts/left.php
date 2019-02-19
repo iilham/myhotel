@@ -1,5 +1,5 @@
 <?php use yii\helpers\Html; ?>
-<aside class="main-sidebar">
+<aside class="main-sidebar" style="background-color: #d1dce0;">
 
     <section class="sidebar">
 
@@ -22,6 +22,7 @@
                     ['label' => 'Payment', 'icon' => 'file-code-o', 'url' => ['payment/index']],
                     ['label' => 'Reservation', 'icon' => 'dashboard', 'url' => ['reservation/index']],
                     ['label' => 'Room Info', 'icon' => 'dashboard', 'url' => ['roominfo/index']],
+                    ['label' => 'Room Master', 'icon' => 'dashboard', 'url' => ['roommaster/index']],
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                 ],
             ]

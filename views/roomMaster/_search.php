@@ -4,30 +4,24 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\PaymentSearch */
+/* @var $model app\models\RoomMasterSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="payment-search">
+<div class="room-master-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'resvId') ?>
+    <?= $form->field($model, 'no') ?>
 
-    <?= $form->field($model, 'nameResv') ?>
+    <?= $form->field($model, 'roomType') ?>
 
-    <?= $form->field($model, 'roomNo') ?>
+    <?= $form->field($model, 'price') ?>
 
-    <?= $form->field($model, 'pay') ?>
-
-    <?= $form->field($model, 'addCost') ?>
-
-    <?php // echo $form->field($model, 'disc') ?>
-
-    <?php // echo $form->field($model, 'change') ?>
+    <?= $form->field($model, 'amenities') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
