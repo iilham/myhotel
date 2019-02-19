@@ -13,8 +13,11 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'number')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'type')->textarea(['rows' => 6]) ?>
+    <?=
+    $form->field($model, 'type')->dropDownList([
+        'STANDARD ROOM'=>'STANDARD ROOM', 'FAMILY ROOM'=>'FAMILY ROOM', 'SUITE ROOM'=>'SUITE ROOM', 'VIP ROOM'=>'VIP ROOM'
+    ], ['prompt'=>'-Pilih Tipe Kamar-'])
+    ?>
 
     <?= $form->field($model, 'price')->textInput() ?>
 

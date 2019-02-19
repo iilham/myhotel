@@ -45,7 +45,7 @@ class RoomInfo extends \yii\db\ActiveRecord
     {
         return [
             'number' => 'Number',
-            'type' => 'Type',
+            'type' => 'Tipe Kamar',
             'price' => 'Price',
             'amenities' => 'Amenities',
             'status' => 'Status',
