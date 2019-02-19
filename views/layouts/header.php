@@ -24,7 +24,7 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?= Html::img('@web/images/user.png', ['alt' => 'user image', 'class' => 'img-circle user-image',]); ?>
-                        <span class="hidden-xs">Muh. Ilham</span>
+                        <span class="hidden-xs"><?= Yii::$app->user->identity->nama ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -33,7 +33,12 @@ use yii\helpers\Html;
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <?php
+                        $idd=Yii::$app->user->identity->id;
+                                echo Html::a(
+                                        'Profile', ["/user/view?id=$idd"], ['class' => 'btn btn-default btn-flat']
+                                )
+                                ?>
                             </div>
                             <div class="pull-right">
                                 <?=

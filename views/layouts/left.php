@@ -9,7 +9,7 @@
                 <?= Html::img('@web/images/user.png', ['alt' => 'user image', 'class' => 'img-circle',]); ?>
             </div>
             <div class="pull-left info">
-                <p>Muh. Ilham</p>
+                <p><?= Yii::$app->user->identity->nama ?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>

@@ -9,6 +9,10 @@ use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use app\models\SignupForm;
+use app\models\ResetPasswordForm;
+use app\models\PasswordResetRequestForm;
+
 
 class SiteController extends Controller
 {
@@ -115,7 +119,26 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+    /**
+     * Signs user up.
+     *
+     * @return mixed
+     */
+    public function actionSignup()
+    {
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
 
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Displays about page.
      *
