@@ -29,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
             'number',
                 [
                 'attribute' => 'type',
-                'filter' => ArrayHelper::map(RoomInfo::find()->asArray()->all(), 'ID', 'type'),
+                'filter' => ArrayHelper::map(RoomInfo::find()->asArray()->all(), 'type', 'type'),
             ],
-            'type:ntext',
+//            'type:ntext',
             'price',
             'amenities:ntext',
             'status',
