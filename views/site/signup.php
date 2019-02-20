@@ -1,5 +1,4 @@
 <?php
-
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\SignupForm */
@@ -10,27 +9,31 @@ use yii\bootstrap\ActiveForm;
 $this->title = 'Signup';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="site-signup">
+<div class="login-box">
 
     <p>Please fill out the following fields to signup:</p>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
+    <div class="login-box-body">
+        <!--<div class="col-lg-5">-->
+        <?php $form = ActiveForm::begin(['id' => 'form-signup']); ?>
 
-                <?= $form->field($model, 'nama')->textInput(['autofocus' => true]) ?>
-            
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+        <?= $form->field($model, 'nama')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'email') ?>
+        <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
+        <?= $form->field($model, 'email') ?>
 
-                <div class="form-group">
-                    <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
-                </div>
+        <?= $form->field($model, 'password')->passwordInput() ?>
+        <?=
+        $form->field($model, 'captcha')->widget(\yii\captcha\Captcha::classname(), [
+        ])
+        ?>
 
-            <?php ActiveForm::end(); ?>
+        <div class="form-group">
+            <?= Html::submitButton('Signup', ['class' => 'btn btn-primary', 'name' => 'signup-button']) ?>
         </div>
+
+        <?php ActiveForm::end(); ?>
+        <!--</div>-->
     </div>
 </div>
