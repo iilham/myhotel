@@ -37,7 +37,7 @@ class Reservation extends \yii\db\ActiveRecord
             [['capacity'], 'integer'],
             [['name'], 'string', 'max' => 25],
             [['dateIn', 'dateOut'], 'string', 'max' => 15],
-            [['RoomNo'], 'string', 'max' => 4],
+            [['RoomNo'], 'string', 'max' => 6],
         ];
     }
 

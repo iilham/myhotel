@@ -9,23 +9,23 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use \app\models\RoomInfo;
 
 /**
  * ReservationController implements the CRUD actions for Reservation model.
  */
-class ReservationController extends Controller
-{
+class ReservationController extends Controller {
+
     /**
      * {@inheritdoc}
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [
             'access' => [
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['view', 'index', 'update', 'create', 'delete'],
+                        'actions' => ['view', 'index', 'update', 'create', 'delete','listkamar'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -44,14 +44,13 @@ class ReservationController extends Controller
      * Lists all Reservation models.
      * @return mixed
      */
-    public function actionIndex()
-    {
+    public function actionIndex() {
         $searchModel = new ReservationSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
+                    'searchModel' => $searchModel,
+                    'dataProvider' => $dataProvider,
         ]);
     }
 
@@ -61,10 +60,9 @@ class ReservationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
-    {
+    public function actionView($id) {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+                    'model' => $this->findModel($id),
         ]);
     }
 
@@ -73,8 +71,7 @@ class ReservationController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
-    {
+    public function actionCreate() {
         $model = new Reservation();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -82,8 +79,26 @@ class ReservationController extends Controller
         }
 
         return $this->render('create', [
-            'model' => $model,
+                    'model' => $model,
+                    'nomer_kamar' => [],
         ]);
+    }
+
+    public function actionListkamar($type) {
+        $countPosts = RoomInfo::find()
+                ->where(['type' => $type])
+                ->count();
+//        die($countPosts);
+        $posts = RoomInfo::find()
+                        ->where(['type' => $type])->all();
+        if ($countPosts > 0) {
+            echo "<option value=''>Pilih nomer kamar...</option>";
+            foreach ($posts as $post) {
+                echo "<option value='" . $post->number . "'>" . $post->number . "</option>";
+            }
+        } else {
+            echo "<option>-</option>";
+        }
     }
 
     /**
@@ -93,8 +108,7 @@ class ReservationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
-    {
+    public function actionUpdate($id) {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
@@ -102,7 +116,7 @@ class ReservationController extends Controller
         }
 
         return $this->render('update', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -113,8 +127,7 @@ class ReservationController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
-    {
+    public function actionDelete($id) {
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
@@ -127,12 +140,12 @@ class ReservationController extends Controller
      * @return Reservation the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
-    {
+    protected function findModel($id) {
         if (($model = Reservation::findOne($id)) !== null) {
             return $model;
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+
 }
