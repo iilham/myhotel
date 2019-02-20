@@ -90,7 +90,7 @@ class ReservationController extends Controller {
                 ->count();
 //        die($countPosts);
         $posts = RoomInfo::find()
-                        ->where(['type' => $type])->all();
+                        ->where(['type' => $type, 'status'=>'0'])->all();
         if ($countPosts > 0) {
             echo "<option value=''>Pilih nomer kamar...</option>";
             foreach ($posts as $post) {
