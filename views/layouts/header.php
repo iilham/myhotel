@@ -6,11 +6,11 @@ use yii\helpers\Html;
 /* @var $content string */
 ?>
 
-<header class="main-header" style="background-color: #000">
+<header class="main-header" style="background-color: #36474F">
 
 <?= Html::a('<span class="logo-mini">APP</span><span class="logo-lg">' . Yii::$app->name . '</span>', Yii::$app->homeUrl, ['class' => 'logo']) ?>
 
-    <nav class="navbar navbar-static-top" role="navigation"  style="background-color: #666666">
+    <nav class="navbar navbar-static-top" role="navigation"  style="background-color: #FEAC02">
 
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
@@ -24,9 +24,9 @@ use yii\helpers\Html;
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <?= Html::img('@web/images/user.png', ['alt' => 'user image', 'class' => 'img-circle user-image',]); ?>
-                        <span class="hidden-xs"><?= Yii::$app->user->identity->nama ?></span>
+                        <span class="hidden-xs" style="color: #000"><?= Yii::$app->user->identity->nama ?></span>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" style="border: 2px solid #B1BFC8">
                         <!-- User image -->
                         <li class="user-header" style="height: 10%">
                         <?= Html::img('@web/images/user.png', ['alt' => 'User Image', 'class' => 'img-circle']); ?>

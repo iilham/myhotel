@@ -51,4 +51,7 @@ class RoomInfo extends \yii\db\ActiveRecord
             'status' => 'Status',
         ];
     }
+        public static function getType() {
+        return self::find()->select(['type','number'])->indexBy('type')->column();
+    }
 }

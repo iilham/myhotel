@@ -1,5 +1,5 @@
 <?php use yii\helpers\Html; ?>
-<aside class="main-sidebar" style="background-color: #d1dce0;">
+<aside class="main-sidebar" style="background-color: #B1BFC8;">
 
     <section class="sidebar">
 

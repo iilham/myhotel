@@ -4,6 +4,7 @@ use yii\helpers\Html;
 //use yii\widgets\ActiveForm;
 use kartik\date\DatePicker;
 use kartik\form\ActiveForm;
+use app\models\RoomInfo;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Reservation */
@@ -20,7 +21,7 @@ use kartik\form\ActiveForm;
 
     <?=
     $form->field($model, 'capacity')->dropDownList([
-        '1'=>'1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+        '1' => '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
         '11', '12', '13', '14', '15', '16', '17', '18', '19', '20',
         '21', '22', '23', '24', '25', '26', '27', '28', '29', '30',
         '31', '32', '33', '34', '35', '36', '37', '38', '39', '40',
@@ -30,7 +31,7 @@ use kartik\form\ActiveForm;
         '71', '72', '73', '74', '75', '76', '77', '78', '79', '80',
         '81', '82', '83', '84', '85', '86', '87', '88', '89', '90',
         '91', '92', '93', '94', '95', '96', '97', '98', '99', '100',
-    ], ['prompt'=>'-Kapasitas-'])
+            ], ['prompt' => '-Kapasitas-'])
     ?>
     <?php
     echo '<label class="control-label">Tanggal Pemesanan</label>';
@@ -51,6 +52,15 @@ use kartik\form\ActiveForm;
     ?>
 
     <?= $form->field($model, 'roomType')->textarea(['rows' => 6]) ?>
+    <?=
+    $form->field($model, 'roomType')->dropDownList(RoomInfo::getType(), [
+        'prompt' => 'Pilih tipe Kamar...', 'onchange' => '
+                            $.post( "listkabupatens?id=' . '"+$(this).val(),function (data){
+                                $("select#cb_kab").html(data);
+                            });'
+    ])->label(false);
+    ?>
+
 
     <?= $form->field($model, 'RoomNo')->textInput(['maxlength' => true]) ?>
 
