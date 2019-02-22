@@ -29,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'roomNo',
             'pay',
             'addCost',
-            //'disc',
+            'disc',
             //'change',
 
             ['class' => 'yii\grid\ActionColumn'],
